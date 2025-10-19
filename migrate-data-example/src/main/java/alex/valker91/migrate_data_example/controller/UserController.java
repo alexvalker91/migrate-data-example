@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -39,6 +40,16 @@ public class UserController {
         return userService.findById(userId).map(user -> ResponseEntity.ok(UserMapper.toUserResponseDto(user)))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
+    @GetMapping("/all")
+    public List<UserResponseDto> findAll() {
+        return userService.findAll().stream().map(UserMapper::toUserResponseDto).toList();
+    }
+
+    @PostMapping("/copy-users")
+    public List<Long> copyUsers() {
+        return userService.copyUsersToUserCopyRepository();
+    }
 }
 
 // POST http://localhost:8081/api/v1/user
@@ -49,3 +60,7 @@ public class UserController {
 //    }
 
 // GET http://localhost:8081/api/v1/user/1
+
+// GET http://localhost:8081/api/v1/user/all
+
+// POST http://localhost:8081/api/v1/user/copy-users
