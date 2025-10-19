@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: migrate-data-example
+  datasource:
+    url: jdbc:postgresql://localhost:5432/migrate-data-example
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    schemas:
+      - public
