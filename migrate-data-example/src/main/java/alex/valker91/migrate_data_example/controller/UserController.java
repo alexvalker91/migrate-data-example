@@ -52,15 +52,29 @@ public class UserController {
     }
 }
 
-// POST http://localhost:8081/api/v1/user
-//     {
-//        "id": 1,
-//        "name": "my name",
-//        "surname": "my surname"
-//    }
+/*
+ POST http://localhost:8081/api/v1/user
+     {
+        "id": 1,
+        "name": "my name",
+        "surname": "my surname"
+    }
+ GET http://localhost:8081/api/v1/user/1
 
-// GET http://localhost:8081/api/v1/user/1
+ GET http://localhost:8081/api/v1/user/all
 
-// GET http://localhost:8081/api/v1/user/all
+ POST http://localhost:8081/api/v1/user/copy-users
+*/
 
-// POST http://localhost:8081/api/v1/user/copy-users
+/*
+http://localhost:8082/
+keycloak:
+http://localhost:8082/admin/master/console/#/my-keycloak
+user: admin
+password: admin
+users:
+user: customer_username
+password: newpassword
+user: manager_username
+password: newpassword
+*/
