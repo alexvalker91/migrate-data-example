@@ -6,6 +6,7 @@ import alex.valker91.migrate_data_example.model.UserRequestDto;
 import alex.valker91.migrate_data_example.model.UserResponseDto;
 import alex.valker91.migrate_data_example.service.FileService;
 import alex.valker91.migrate_data_example.service.UserService;
+import alex.valker91.migrate_data_example.service.HttpService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +21,12 @@ public class UserController {
 
     private final UserService userService;
     private final FileService fileService;
+    private final HttpService httpService;
 
-    public UserController(UserService userService, FileService fileService) {
+    public UserController(UserService userService, FileService fileService, HttpService httpService) {
         this.userService = userService;
         this.fileService = fileService;
+        this.httpService = httpService;
     }
 
     @PostMapping
@@ -57,6 +60,11 @@ public class UserController {
     @PostMapping("/process-file")
     public String processFile() {
         return fileService.processFile();
+    }
+
+    @PostMapping("/by-http")
+    public void getDataByHttp(@RequestParam long id) {
+        httpService.getData(id);
     }
 }
 
