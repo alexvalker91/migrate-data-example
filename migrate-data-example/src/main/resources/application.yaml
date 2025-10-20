@@ -16,3 +16,6 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8082/realms/my-keycloak
+
+file:
+  path: C:/Users/AliaksandrKreyer/Desktop/my/repositories/migrate-data-example/migrate-data-example/src/main/resources/file.txt

@@ -4,6 +4,7 @@ import alex.valker91.migrate_data_example.mapper.UserMapper;
 import alex.valker91.migrate_data_example.model.UserDomain;
 import alex.valker91.migrate_data_example.model.UserRequestDto;
 import alex.valker91.migrate_data_example.model.UserResponseDto;
+import alex.valker91.migrate_data_example.service.FileService;
 import alex.valker91.migrate_data_example.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,11 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
+    private final FileService fileService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, FileService fileService) {
         this.userService = userService;
+        this.fileService = fileService;
     }
 
     @PostMapping
@@ -49,6 +52,11 @@ public class UserController {
     @PostMapping("/copy-users")
     public List<Long> copyUsers() {
         return userService.copyUsersToUserCopyRepository();
+    }
+
+    @PostMapping("/process-file")
+    public String processFile() {
+        return fileService.processFile();
     }
 }
 
